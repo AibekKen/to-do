@@ -68,15 +68,14 @@ export default {
   display: block;
   width: 25px;
   height: 25px;
-  margin: 0 0 2px 0;
+  margin: 0 0 4px 0;
   img {
     padding: 1px;
     width: 100%;
     height: 100%;
   }
 }
-.done {
-}
+
 .input {
   display: inline-block;
 }

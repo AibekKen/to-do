@@ -1,29 +1,18 @@
 <template>
   <div>
-    <form class="add-task__form" action="#" @submit.prevent="addTask">
-      <input
-        v-model="taskAdd"
-        type="text"
-        class="add-task__input"
-        placeholder="Введите задачу"
-      />
-      <a href="#" class="add-task__submit" @click.prevent="addTask"
-        ><img src="@/assets/icons/add-icon.svg" alt="icon" />
-      </a>
-    </form>
     <div class="task">
       <div
-        class="task__task-list"
         v-for="(task, index) in taskList"
         :key="task.id"
-      >
+        class="task__task-list"
+      > 
         <form class="task__form" action="" @submit.prevent>
           <input
             v-model="task.checked"
             type="checkbox"
             class="task__checkbox"
-            @change="watchChange"
             :checked="task.checked"
+            @change="watchChange"
           />
         </form>
 
@@ -51,7 +40,7 @@
           >
         </form>
 
-        <a href="#" class="task__delete" @click.prevent="deleteTask">
+        <a href="#" class="task__delete" @click.prevent="$emit('remove', task)">
           <img src="@/assets/icons/minus.svg" alt="" />
         </a>
       </div>
@@ -61,40 +50,22 @@
 
 <script>
 export default {
-  data() {
-    return {
-      taskAdd: "",
-      taskList: [],
-    };
-  },
-  mounted() {
-    if (localStorage.taskList) {
-      this.taskList = JSON.parse(localStorage.taskList);
-    }
-  },
-  methods: {
-    addTask() {
-      if (this.taskAdd) {
-        const newTask = {
-          id: Date.now(),
-          taskName: this.taskAdd,
-          isTaskTitleEdit: false,
-          checked: false,
-        };
-        this.taskList.push(newTask);
-        localStorage.taskList = JSON.stringify(this.taskList);
-        this.taskAdd = "";
-      }
+  props: {
+    taskList: {
+      type: Array,
+      required: true,
     },
+  },
+
+  methods: {
     doTaskEdit(index) {
-      this.taskList[index].isTaskTitleEdit = true;
+      this.$emit("doTaskEdit", index);
     },
     doneTaskEdit(index) {
-      this.taskList[index].isTaskTitleEdit = false;
-      localStorage.taskList = JSON.stringify(this.taskList);
+      this.$emit("doneTaskEdit", index);
     },
     watchChange() {
-      localStorage.taskList = JSON.stringify(this.taskList);
+      this.$emit("watchChange");
     },
   },
 };
@@ -104,36 +75,12 @@ export default {
 * {
   transition: all 0.3s ease;
 }
-.add-task {
-  &__form {
-    display: flex;
-    align-items: center;
-    margin: 0 0 30px 0;
-  }
-
-  &__input {
-    display: inline-block;
-    width: 320px;
-    height: 40px;
-    border: 1px solid rgba(0, 0, 0, 0.544);
-    margin: 0 15px 0 0;
-    padding: 10px;
-    font-size: 14px;
-    line-height: 40px;
-  }
-
-  &__submit {
-    &:hover {
-      transform: scale(1.1);
-    }
-  }
-}
 
 .task {
   &__task-list {
     display: flex;
     align-items: center;
-    max-width: 650px;
+    width: 100%;
     height: 80px;
     padding: 15px;
     background: rgba(188, 245, 204, 0.25);
@@ -143,8 +90,6 @@ export default {
   &__form {
     margin: 0 10px 0 0px;
   }
-  &__checkbox {
-  }
 
   &__title {
     font-size: 24px;
@@ -152,6 +97,8 @@ export default {
     max-width: 400px;
     overflow: hidden;
     padding: 0 5px 0 0;
+    line-height: 30px;
+    height: 30px;
   }
   &__title-block {
     display: flex;
