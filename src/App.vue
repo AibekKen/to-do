@@ -1,11 +1,18 @@
 <template>
   <div>
-     
+   <project-title/>
+    <to-do-list />
   </div>
 </template>
 
 <script>
+import ToDoList from "./components/ToDoList.vue";
+import ProjectTitle from "./components/ProjectTitle.vue";
 export default {
+  components: {
+    ToDoList,
+    ProjectTitle,
+  },
   name: "App",
 };
 </script>
