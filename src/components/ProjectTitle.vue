@@ -12,7 +12,7 @@
       v-else
       class="title-block title-block__edit"
       action="#"
-      @submit.prevent="submitTitle"
+      @submit.prevent="doneEdit"
     >
       <input
         v-model="title"
@@ -57,11 +57,24 @@ export default {
 <style lang='scss'>
 .title-section {
   margin: 0 0 60px 0;
+  @media (max-width: 509px) {
+    margin: 0 0 10px 0;
+  }
 }
 .title {
   padding: 10px 0 0 0;
   font-size: 40px;
   width: 400px;
+  @media (max-width: 509px) {
+    font-size: 32px;
+    width: 320px;
+    padding: 10.5px 0 0 0;
+  }
+  @media (max-width: 375px) {
+    font-size: 28px;
+    width: 280px;
+    padding: 10.5px 0 0 0;
+  }
 }
 .edit,
 .done {

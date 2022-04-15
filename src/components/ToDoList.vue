@@ -81,7 +81,8 @@ export default {
 * {
   transition: all 0.3s ease;
 }
-
+@media (max-width: 509) {
+}
 .task-list {
   &__item {
     display: flex;
@@ -92,6 +93,10 @@ export default {
     background: rgba(188, 245, 204, 0.25);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
     margin: 0 0 30px 0;
+    @media (max-width: 509px) {
+      height: 60px;
+      margin: 0 0 20px 0;
+    }
   }
   &__form {
     margin: 0 10px 0 0px;
@@ -105,6 +110,18 @@ export default {
     padding: 0 5px 0 0;
     line-height: 30px;
     height: 30px;
+    @media (max-width: 509px) {
+      line-height: 20px;
+      height: 20px;
+      font-size: 18px;
+      min-width: 150px;
+      max-width: 180px;
+    }
+    @media (max-width: 375px) {
+      font-size: 14px;
+      min-width: 100px;
+      max-width: 120px;
+    }
   }
   &__title-block {
     display: flex;
@@ -119,11 +136,22 @@ export default {
     margin: 0 40px 0 0;
     font-size: 15px;
     color: #225359;
+    @media (max-width: 509px) {
+      font-size: 12px;
+      margin: 0 20px 0 0;
+    }
+
+    @media (max-width: 375px) {
+      font-size: 11px;
+    }
   }
   &__delete {
     display: flex;
     &:hover {
       transform: scale(1.1);
+    }
+    @media (max-width: 375px) {
+      transform: scale(0.8);
     }
   }
 
@@ -131,6 +159,15 @@ export default {
     background: transparent;
     min-width: 250px;
     max-width: 400px;
+    overflow: hidden;
+    @media (max-width: 509px) {
+      min-width: 175px;
+      max-width: 175px;
+    }
+    @media (max-width: 375px) {
+      min-width: 123px;
+      max-width: 123px;
+    }
   }
 }
 </style>

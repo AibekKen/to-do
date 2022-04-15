@@ -40,9 +40,9 @@ export default {
       localStorage.filterName = this.filterName;
       localStorage.filterChecked = this.filterChecked;
     },
-    updated() {
-      this.doFilter();
-    },
+  },
+  updated() {
+    this.doFilter();
   },
 };
 </script>

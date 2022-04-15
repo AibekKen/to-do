@@ -108,5 +108,8 @@ $minwidth: 320px;
   max-width: 650px;
   margin: 0 auto;
   padding: 15px;
+  @media (max-width: 509px) {
+    padding: 15px 10px;
+  }
 }
 </style>
