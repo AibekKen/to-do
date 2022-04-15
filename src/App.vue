@@ -15,6 +15,7 @@
 </template>
 
 <script>
+//Vue.config.devtools = true;
 import ToDoList from "./components/ToDoList.vue";
 import ProjectTitle from "./components/ProjectTitle.vue";
 import AddTask from "./components/AddTask.vue";
