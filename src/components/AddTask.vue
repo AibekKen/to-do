@@ -19,6 +19,7 @@ export default {
         taskName: "",
         isTaskTitleEdit: false,
         checked: false,
+        display: true,
       },
     };
   },
@@ -31,6 +32,7 @@ export default {
           taskName: "",
           isTaskTitleEdit: false,
           checked: false,
+          display: true,
         };
       }
     },
